@@ -25,6 +25,8 @@ import { Modal, TouchableOpacity } from "react-native";
 
 import GoogleMapComponent from "./GoogleMapComponent";
 
+import * as AudioController from "react-audio-controller";
+
 /**
  * 聊天畫面
  *
@@ -35,6 +37,7 @@ import GoogleMapComponent from "./GoogleMapComponent";
 export default class ChatComponent extends Component {
   constructor(props) {
     super(props);
+
     this.state = {
       mapModalVisible: false, //控制googleMap彈出視窗
       soundButtonVisible: false, //控制錄音按鈕
@@ -81,19 +84,19 @@ export default class ChatComponent extends Component {
    * @returns
    * @memberof ChatComponent
    */
-  renderItem(element) {
+  renderItem(element, index) {
     switch (element.MessageType) {
-      case 0:
+      case 0: // 上線中 | 離線
         return (
-          <Separator bordered key={element.DateTime}>
+          <Separator bordered key={index}>
             <Text>
               {element.Message} - {element.DateTime}
             </Text>
           </Separator>
         );
-      case 1:
+      case 1: //一般訊息
         return (
-          <ListItem avatar key={element.DateTime}>
+          <ListItem avatar key={index}>
             <Left />
             <Body>
               <Text>{element.UserName}</Text>
@@ -105,9 +108,9 @@ export default class ChatComponent extends Component {
           </ListItem>
         );
         break;
-      case 2:
+      case 2: //位置訊息
         return (
-          <ListItem icon>
+          <ListItem icon key={index}>
             <Left>
               <Icon name="ios-pin" />
             </Left>
@@ -117,6 +120,26 @@ export default class ChatComponent extends Component {
           </ListItem>
         );
         break;
+      case 3:
+        return (
+          <ListItem icon key={index}>
+            <Left />
+            <Body>
+              <Text>{element.UserName}</Text>
+              <Button
+                success
+                onPress={() => {
+                  AudioController.PlayerStart(element.Message);
+                }}
+              >
+                <Text>撥放</Text>
+              </Button>
+            </Body>
+            <Right>
+              <Text note>{element.DateTime}</Text>
+            </Right>
+          </ListItem>
+        );
     }
   }
   /**
@@ -153,12 +176,17 @@ export default class ChatComponent extends Component {
               <Icon
                 name="ios-paper-plane"
                 onPress={() => {
+                  if (!this.state.message || this.state.message.length == 0)
+                    return;
+
                   this.props.pushMsg({
                     Message: this.state.message,
                     DateTime: new Date().toUTCString(),
                     MessageType: 1
                   });
+
                   this.setState({ message: "" });
+                  this.chatListRef._root.scrollToEnd();
                 }}
               />
             </Item>
@@ -206,7 +234,7 @@ export default class ChatComponent extends Component {
   }
 
   /**
-   * 取得地理位址
+   * 取得地理位址 , 來自GoolgeMapComponent
    *
    * @param {any} location
    * @memberof ChatComponent
@@ -218,6 +246,7 @@ export default class ChatComponent extends Component {
       MessageType: 2
     });
     this.switchMapModel(false);
+    this.chatListRef._root.scrollToEnd();
   }
 
   /**
@@ -235,15 +264,16 @@ export default class ChatComponent extends Component {
               iconLeft
               block
               warning
-              onLongPress={() => {
-                console.log("onLongPress");
-                this.setIsRecord(true);
-                console.log(this.state.isRecord);
-              }}
               onPressOut={() => {
-                console.log("onPressOut");
                 this.setIsRecord(false);
-                console.log(this.state.isRecord);
+                AudioController.RecordEnd().then(base64String =>
+                  this.props.pushMsg({
+                    Message: base64String,
+                    DateTime: new Date().toUTCString(),
+                    MessageType: 3
+                  })
+                );
+                this.chatListRef._root.scrollToEnd();
               }}
             >
               <Icon name="ios-volume-up" />
@@ -255,14 +285,8 @@ export default class ChatComponent extends Component {
               block
               info
               onLongPress={() => {
-                console.log("onLongPress");
                 this.setIsRecord(true);
-                console.log(this.state.isRecord);
-              }}
-              onPressOut={() => {
-                console.log("onPressOut");
-                this.setIsRecord(false);
-                console.log(this.state.isRecord);
+                AudioController.RecordStart();
               }}
             >
               <Icon name="ios-volume-up" />
@@ -283,12 +307,12 @@ export default class ChatComponent extends Component {
   render() {
     return (
       <Container>
-        <Content>
+        <Content ref={ref => (this.chatListRef = ref)}>
           {this.renderMapModel()}
 
           <List>
-            {this.props.MessageList.map(element => {
-              return this.renderItem(element);
+            {(this.props.MessageList || []).map((element, index) => {
+              return this.renderItem(element, index);
             })}
           </List>
         </Content>

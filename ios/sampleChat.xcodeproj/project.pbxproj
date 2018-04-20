@@ -51,6 +51,7 @@
 		FE6BF76BFCC043F9965AEEED /* MaterialCommunityIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E107A737B1034408A7936655 /* MaterialCommunityIcons.ttf */; };
 		99F0382067EB46B9957EF97A /* libRNCmap.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 98B762F7D9B14BD3822B1691 /* libRNCmap.a */; };
 		0C9086D05EC146E2A24D6D9C /* libAirMaps.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 46E211D274154F77AFD40E28 /* libAirMaps.a */; };
+		07071CECD4614345B59433FC /* libRNReactAudioRecord.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 47AE24B55B6C40BF8A99C5D7 /* libRNReactAudioRecord.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -289,6 +290,8 @@
 		98B762F7D9B14BD3822B1691 /* libRNCmap.a */ = {isa = PBXFileReference; name = "libRNCmap.a"; path = "libRNCmap.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
 		E08274BCB1464812B58C8D9D /* AirMaps.xcodeproj */ = {isa = PBXFileReference; name = "AirMaps.xcodeproj"; path = "../node_modules/react-native-maps/lib/ios/AirMaps.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
 		46E211D274154F77AFD40E28 /* libAirMaps.a */ = {isa = PBXFileReference; name = "libAirMaps.a"; path = "libAirMaps.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
+		4016EFDC950945D3946E2179 /* RNReactAudioRecord.xcodeproj */ = {isa = PBXFileReference; name = "RNReactAudioRecord.xcodeproj"; path = "../node_modules/react-audio-controller/ios/RNReactAudioRecord.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
+		47AE24B55B6C40BF8A99C5D7 /* libRNReactAudioRecord.a */ = {isa = PBXFileReference; name = "libRNReactAudioRecord.a"; path = "libRNReactAudioRecord.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -318,6 +321,7 @@
 				461AD39B2D7E4D38AA55AD3A /* libRNVectorIcons.a in Frameworks */,
 				99F0382067EB46B9957EF97A /* libRNCmap.a in Frameworks */,
 				0C9086D05EC146E2A24D6D9C /* libAirMaps.a in Frameworks */,
+				07071CECD4614345B59433FC /* libRNReactAudioRecord.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -487,6 +491,7 @@
 				876C1FCACC8F4E26A94158DE /* RNVectorIcons.xcodeproj */,
 				D84A1E4F02664B6CB60B832B /* RNCmap.xcodeproj */,
 				E08274BCB1464812B58C8D9D /* AirMaps.xcodeproj */,
+				4016EFDC950945D3946E2179 /* RNReactAudioRecord.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -1050,14 +1055,13 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)\..\node_modules\@expo\vector-icons\vendor\react-native-vector-icons\RNVectorIconsManager",
 					"$(SRCROOT)\..\node_modules\cmap\ios",
 					"$(SRCROOT)\..\node_modules\react-native-maps\lib\ios/**",
+					"$(SRCROOT)\..\node_modules\react-audio-controller\ios",
 				);
 			};
 			name = Debug;
@@ -1079,14 +1083,13 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)\..\node_modules\@expo\vector-icons\vendor\react-native-vector-icons\RNVectorIconsManager",
 					"$(SRCROOT)\..\node_modules\cmap\ios",
 					"$(SRCROOT)\..\node_modules\react-native-maps\lib\ios/**",
+					"$(SRCROOT)\..\node_modules\react-audio-controller\ios",
 				);
 			};
 			name = Release;
@@ -1111,6 +1114,7 @@
 					"$(SRCROOT)\..\node_modules\@expo\vector-icons\vendor\react-native-vector-icons\RNVectorIconsManager",
 					"$(SRCROOT)\..\node_modules\cmap\ios",
 					"$(SRCROOT)\..\node_modules\react-native-maps\lib\ios/**",
+					"$(SRCROOT)\..\node_modules\react-audio-controller\ios",
 				);
 			};
 			name = Debug;
@@ -1134,6 +1138,7 @@
 					"$(SRCROOT)\..\node_modules\@expo\vector-icons\vendor\react-native-vector-icons\RNVectorIconsManager",
 					"$(SRCROOT)\..\node_modules\cmap\ios",
 					"$(SRCROOT)\..\node_modules\react-native-maps\lib\ios/**",
+					"$(SRCROOT)\..\node_modules\react-audio-controller\ios",
 				);
 			};
 			name = Release;
@@ -1164,14 +1169,13 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)\..\node_modules\@expo\vector-icons\vendor\react-native-vector-icons\RNVectorIconsManager",
 					"$(SRCROOT)\..\node_modules\cmap\ios",
 					"$(SRCROOT)\..\node_modules\react-native-maps\lib\ios/**",
+					"$(SRCROOT)\..\node_modules\react-audio-controller\ios",
 				);
 			};
 			name = Debug;
@@ -1202,14 +1206,13 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)\..\node_modules\@expo\vector-icons\vendor\react-native-vector-icons\RNVectorIconsManager",
 					"$(SRCROOT)\..\node_modules\cmap\ios",
 					"$(SRCROOT)\..\node_modules\react-native-maps\lib\ios/**",
+					"$(SRCROOT)\..\node_modules\react-audio-controller\ios",
 				);
 			};
 			name = Release;
@@ -1235,8 +1238,6 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 			};
 			name = Debug;
@@ -1261,8 +1262,6 @@
 				TVOS_DEPLOYMENT_TARGET = 10.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 			};

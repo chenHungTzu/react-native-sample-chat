@@ -1,6 +1,6 @@
 
 export default {
 
-    SocketServerUrl : 'ws://172.20.10.8:8080'
+    SocketServerUrl : 'ws://10.2.123.55:8080' 
 
-};
+}; 

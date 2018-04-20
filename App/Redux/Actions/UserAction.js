@@ -46,7 +46,7 @@ export function PushMessage(Pushed) {
     payload: {
       DateTime: Pushed.DateTime,
       Message: Pushed.Message,
-      MessageType: 1
+      MessageType: Pushed.MessageType
     }
   };
 }
